@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"time"
 
 	hm "github.com/0l1v3rr/port-scanner/internal/help"
 	validip "github.com/0l1v3rr/port-scanner/pkg/ip"
@@ -46,11 +47,17 @@ func main() {
 	port := 80
 	open := pt.ScanPort(protocol, ip, port)
 
+	start := time.Now()
+
+	fmt.Printf("Starting port scanning... (%v)\n", ip)
 	fmt.Println("PORT \tSTATE \tSERVICE")
 	if open {
-		fmt.Printf("%v/%v \topen \thttp", port, protocol)
+		fmt.Printf("%v/%v \topen \thttp \n", port, protocol)
 	} else {
-		fmt.Printf("%v/%v \tclosed \thttp", port, protocol)
+		fmt.Printf("%v/%v \tclosed \thttp \n", port, protocol)
 	}
+
+	elapsed := time.Since(start)
+	fmt.Printf("Done. Scanned in %v. \n", elapsed*1000)
 
 }
