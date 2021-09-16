@@ -6,15 +6,18 @@ import (
 	"os"
 
 	hm "github.com/0l1v3rr/port-scanner/internal/help"
+	validip "github.com/0l1v3rr/port-scanner/pkg/ip"
 	pt "github.com/0l1v3rr/port-scanner/pkg/port"
 )
 
 const (
 	defaultProtocol string = "tcp"
+	defaultIp       string = "localhost"
 )
 
 var (
 	protocol string
+	ip       string
 )
 
 func main() {
@@ -26,7 +29,8 @@ func main() {
 		}
 	}
 
-	flag.StringVar(&protocol, "protocol", defaultProtocol, "The protocol.")
+	flag.StringVar(&protocol, "protocol", defaultProtocol, "The protocol")
+	flag.StringVar(&ip, "ip", defaultIp, "The IP Address you want to scan.")
 	flag.Parse()
 
 	if protocol != "udp" && protocol != "tcp" {
@@ -34,8 +38,13 @@ func main() {
 		return
 	}
 
+	if !validip.IsValidIp(ip) {
+		fmt.Println("Error: Invalid IP.")
+		return
+	}
+
 	port := 80
-	open := pt.ScanPort(protocol, "localhost", port)
+	open := pt.ScanPort(protocol, ip, port)
 
 	fmt.Println("PORT \tSTATE \tSERVICE")
 	if open {

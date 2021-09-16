@@ -7,5 +7,6 @@ func PrintHelpMenu() {
 	fmt.Println("\tPORT SCANNER HELP MENU")
 	fmt.Println(" ───────────────────────────────────")
 	fmt.Println(" --protocol \t The protocol (tcp/udp). Default is TCP.")
+	fmt.Println(" --ip \t\t The IP Address you want to scan. Default is 'localhost'.")
 	fmt.Println("")
 }
