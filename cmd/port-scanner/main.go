@@ -3,7 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 
+	hm "github.com/0l1v3rr/port-scanner/internal/help"
 	pt "github.com/0l1v3rr/port-scanner/pkg/port"
 )
 
@@ -16,6 +18,14 @@ var (
 )
 
 func main() {
+
+	if len(os.Args) > 1 {
+		if os.Args[1] == "help" {
+			hm.PrintHelpMenu()
+			return
+		}
+	}
+
 	flag.StringVar(&protocol, "protocol", defaultProtocol, "The protocol.")
 	flag.Parse()
 
