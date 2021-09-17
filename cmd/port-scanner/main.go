@@ -49,12 +49,12 @@ func main() {
 
 	start := time.Now()
 
-	fmt.Printf("Starting port scanning... (%v)\n", ip)
-	fmt.Println("PORT \tSTATE \tSERVICE")
+	fmt.Printf("\nStarting port scanning... (%v)\n", ip)
+	fmt.Println("PROTOCOL \tPORT \t\tSTATE \t\tSERVICE")
 	if open {
-		fmt.Printf("%v/%v \topen \thttp \n", port, protocol)
+		fmt.Printf("%v \t\t%v \t\topen \t\t%v \n", protocol, port, pt.PortServiceName(port))
 	} else {
-		fmt.Printf("%v/%v \tclosed \thttp \n", port, protocol)
+		fmt.Printf("%v \t\t%v \t\tclosed \t\t%v \n", protocol, port, pt.PortServiceName(port))
 	}
 
 	elapsed := time.Since(start)
