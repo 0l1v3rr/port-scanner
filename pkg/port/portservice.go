@@ -40,6 +40,8 @@ func PortServiceName(port int) string {
 		return "ms exchange"
 	case 110:
 		return "pop3"
+	case 111:
+		return "rpcbind"
 	case 113:
 		return "ident"
 	case 119:
@@ -47,7 +49,9 @@ func PortServiceName(port int) string {
 	case 123:
 		return "ntp"
 	case 135:
-		return "microsoft rpc"
+		return "microsoft-rpc"
+	case 139:
+		return "netbios-ssn"
 	case 143:
 		return "imap4"
 	case 161:
@@ -73,7 +77,7 @@ func PortServiceName(port int) string {
 	case 443:
 		return "https"
 	case 445:
-		return "microsoft ds"
+		return "microsoft-ds"
 	case 464:
 		return "kerberos"
 	case 465:
@@ -84,6 +88,8 @@ func PortServiceName(port int) string {
 		return "isakmp"
 	case 512:
 		return "rexec"
+	case 513:
+		return "login"
 	case 514:
 		return "syslong"
 	case 515:
