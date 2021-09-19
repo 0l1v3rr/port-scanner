@@ -200,6 +200,106 @@ func PortServiceName(port int) string {
 		return "oracle db"
 	case 2484:
 		return "oracle db"
+	case 2745:
+		return "bagle.h"
+	case 2967:
+		return "symantec av"
+	case 3050:
+		return "interbase db"
+	case 3074:
+		return "xbox live"
+	case 3124:
+		return "http proxy"
+	case 3127:
+		return "mydoom"
+	case 3128:
+		return "http proxy"
+	case 3222:
+		return "glbp"
+	case 3260:
+		return "iscsi target"
+	case 3306:
+		return "mysql"
+	case 3389:
+		return "terminal server"
+	case 3689:
+		return "itunes"
+	case 3690:
+		return "subversion"
+	case 3724:
+		return "world of warcraft"
+	case 3784:
+		return "ventrilo"
+	case 3785:
+		return "ventrilo"
+	case 4333:
+		return "msql"
+	case 4444:
+		return "blaster"
+	case 4664:
+		return "google desktop"
+	case 4672:
+		return "emule"
+	case 4899:
+		return "radmin"
+	case 5000:
+		return "upnp"
+	case 5001:
+		return "slingbox"
+	case 5004:
+		return "rtp"
+	case 5005:
+		return "rtp"
+	case 5050:
+		return "yahoo messenger"
+	case 5060:
+		return "sip"
+	case 5190:
+		return "aim/icq"
+	case 5222:
+		return "xmpp/jabber"
+	case 5223:
+		return "xmpp/jabber"
+	case 5432:
+		return "postgresql"
+	case 5500:
+		return "vnc server"
+	case 5554:
+		return "sasser"
+	case 5800:
+		return "vnc over http"
+	case 5900:
+		return "vnc server"
+	case 6000:
+		return "x11"
+	case 6001:
+		return "x11"
+	case 6112:
+		return "battle.net"
+	case 6129:
+		return "dameware"
+	case 6257:
+		return "winmx"
+	case 6346:
+		return "gnutella"
+	case 6347:
+		return "gnutella"
+	case 6500:
+		return "gamespy arcade"
+	case 6566:
+		return "sane"
+	case 6588:
+		return "analogx"
+	case 6665:
+		return "irc"
+	case 6679:
+		return "irc over ssl"
+	case 6699:
+		return "napster"
+	case 6881:
+		return "bittorrent"
+	case 6999:
+		return "bittorrent"
 	}
 
 	return "unknown"
