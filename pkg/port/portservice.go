@@ -300,6 +300,92 @@ func PortServiceName(port int) string {
 		return "bittorrent"
 	case 6999:
 		return "bittorrent"
+	case 6891:
+		return "windows live"
+	case 6970:
+		return "quicktime"
+	case 7212:
+		return "ghostsurf"
+	case 7648:
+		return "cu-seeme"
+	case 7649:
+		return "cu-seeme"
+	case 8000:
+		return "internet radio"
+	case 8080:
+		return "http proxy"
+	case 8086:
+		return "kaspersky av"
+	case 8087:
+		return "kaspersky av"
+	case 8118:
+		return "privoxy"
+	case 8200:
+		return "vmware server"
+	case 8500:
+		return "adobe coldfusion"
+	case 8767:
+		return "teamspeak"
+	case 8866:
+		return "bagle.b"
+	case 9100:
+		return "hp jetdirect"
+	case 9101:
+		return "bacula"
+	case 9102:
+		return "bacula"
+	case 9103:
+		return "bacula"
+	case 9119:
+		return "mxit"
+	case 9800:
+		return "webdav"
+	case 9898:
+		return "dabber"
+	case 9988:
+		return "rbot/spybot"
+	case 9999:
+		return "webmin"
+	case 10000:
+		return "webmin"
+	case 10113:
+		return "netlq"
+	case 11371:
+		return "openpgp"
+	case 12035:
+		return "second life"
+	case 12036:
+		return "second life"
+	case 12345:
+		return "netbus"
+	case 13720:
+		return "netbackup"
+	case 13721:
+		return "netbackup"
+	case 14567:
+		return "battlefield"
+	case 15118:
+		return "dipnet/oddbob"
+	case 19226:
+		return "adminsecure"
+	case 19638:
+		return "ensim"
+	case 20000:
+		return "usermin"
+	case 24800:
+		return "synergy"
+	case 25999:
+		return "xfine"
+	case 27015:
+		return "half-life"
+	case 27374:
+		return "sub7"
+	case 28960:
+		return "call of duty"
+	case 31337:
+		return "back orifice"
+	case 33434:
+		return "traceroute"
 	}
 
 	return "unknown"
