@@ -189,9 +189,19 @@ func PortServiceName(port int) string {
 	case 2082:
 		return "cpanel"
 	case 2083:
-		return "cpanel"
+		return "cpanel ssl"
+	case 2086:
+		return "whm"
+	case 2087:
+		return "whm ssl"
+	case 2095:
+		return "webmail"
+	case 2096:
+		return "webmail ssl"
 	case 2100:
 		return "oracle xdb"
+	case 2121:
+		return "ccproxy-ftp"
 	case 2222:
 		return "directadmin"
 	case 2302:
