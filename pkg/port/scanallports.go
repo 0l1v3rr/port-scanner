@@ -5,14 +5,16 @@ import (
 	"time"
 )
 
-func ScanMostKnownPorts(protocol string, ip string) {
+func ScanMostKnownPorts(protocol string, ip string, showClosed bool) {
 
 	start := time.Now()
 	scanned := 0
 	opened := 0
 
 	fmt.Printf("\nStarting port scanning... (%v)\n", ip)
-	fmt.Println("PORT \t\tSTATE \t\tSERVICE")
+	if showClosed {
+		fmt.Println("PORT \t\tSTATE \t\tSERVICE")
+	}
 
 	actualport := 21
 	scanned++
@@ -20,7 +22,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \t\topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 22
@@ -29,7 +33,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \t\topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 23
@@ -38,7 +44,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \t\topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 25
@@ -47,7 +55,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \t\topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 53
@@ -56,7 +66,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \t\topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 69
@@ -65,7 +77,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \t\topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 79
@@ -74,7 +88,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \t\topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 80
@@ -83,7 +99,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \t\topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \t\tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 110
@@ -92,7 +110,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 111
@@ -101,7 +121,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 139
@@ -110,7 +132,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 143
@@ -119,7 +143,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 443
@@ -128,7 +154,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 445
@@ -137,7 +165,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 513
@@ -146,7 +176,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 514
@@ -155,7 +187,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 995
@@ -164,7 +198,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 1080
@@ -173,7 +209,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 2049
@@ -182,7 +220,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 2082
@@ -191,7 +231,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 2121
@@ -200,7 +242,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 2745
@@ -209,7 +253,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 3306
@@ -218,7 +264,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 3127
@@ -227,7 +275,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 4444
@@ -236,7 +286,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 5432
@@ -245,7 +297,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 5554
@@ -254,7 +308,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 5900
@@ -263,7 +319,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 6000
@@ -272,7 +330,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 8866
@@ -281,7 +341,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 9898
@@ -290,7 +352,9 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	actualport = 9988
@@ -299,12 +363,19 @@ func ScanMostKnownPorts(protocol string, ip string) {
 		opened++
 		fmt.Printf("%v/%v \topen \t\t%v\n", actualport, protocol, PortServiceName(actualport))
 	} else {
-		fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		if showClosed {
+			fmt.Printf("%v/%v \tclosed \t\t%v\n", actualport, protocol, PortServiceName(actualport))
+		}
 	}
 
 	elapsed := time.Since(start)
 	fmt.Printf("Done. Scanned in %v. \n", elapsed)
-	fmt.Printf("Scanned ports: %v\n", scanned)
-	fmt.Printf("Open ports: %v\n", opened)
+	if opened < 1 && !showClosed {
+		fmt.Println("There's no opened port.")
+	}
+	if showClosed {
+		fmt.Printf("Scanned ports: %v\n", scanned)
+		fmt.Printf("Open ports: %v\n", opened)
+	}
 
 }

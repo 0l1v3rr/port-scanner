@@ -18,9 +18,10 @@ const (
 )
 
 var (
-	protocol string
-	ip       string
-	port     int
+	protocol   string
+	ip         string
+	port       int
+	showClosed bool
 )
 
 func main() {
@@ -35,6 +36,7 @@ func main() {
 	flag.StringVar(&protocol, "protocol", defaultProtocol, "The protocol")
 	flag.StringVar(&ip, "ip", defaultIp, "The IP Address you want to scan.")
 	flag.IntVar(&port, "port", -123, "The only port you want to scan.")
+	flag.BoolVar(&showClosed, "closed", false, "With this flag, the app won't show the closed ports.")
 	flag.Parse()
 
 	if protocol != "udp" && protocol != "tcp" {
@@ -48,7 +50,7 @@ func main() {
 	}
 
 	if port == -123 {
-		pt.ScanMostKnownPorts(protocol, ip)
+		pt.ScanMostKnownPorts(protocol, ip, !showClosed)
 	} else {
 		if port < 1 {
 			fmt.Println("Error: Invalid port.")
