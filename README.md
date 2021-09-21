@@ -21,3 +21,10 @@ On Windows: `go run cmd\port-scanner\main.go`
 <br><br>
 `--port` -> The only port you want to scan. By default, the app will scan the most known ports.<br>
 **Example usage:** `go run cmd\port-scanner\main.go --port 443`
+<br><br>
+`--closed` -> With this flag, the app won't show the closed ports.<br>
+**Example usage:** `go run cmd\port-scanner\main.go --closed`
+
+### You can combine the flags.
+For example: `go run cmd\port-scanner\main.go --ip 192.168.0.1 --port 23`<br>
+The line above means that you are scanning port **23** of IP **192.168.0.1**.
