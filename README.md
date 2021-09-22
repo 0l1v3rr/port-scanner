@@ -24,6 +24,9 @@ On Windows: `go run cmd\port-scanner\main.go`
 <br><br>
 `--closed` -> With this flag, the app won't show the closed ports.<br>
 **Example usage:** `go run cmd\port-scanner\main.go --closed`
+<br><br>
+`--all` -> With this flag, the app will scan all the ports from 1 to 65535.<br>
+**Example usage:** `go run cmd\port-scanner\main.go --all`
 
 ### You can combine the flags.
 For example: `go run cmd\port-scanner\main.go --ip 192.168.0.1 --port 23`<br>
