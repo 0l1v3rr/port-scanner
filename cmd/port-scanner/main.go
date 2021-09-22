@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
+	"net"
 	"os"
 	"strconv"
 	"time"
@@ -12,16 +14,13 @@ import (
 	pt "github.com/0l1v3rr/port-scanner/pkg/port"
 )
 
-const (
-	defaultProtocol string = "tcp"
-	defaultIp       string = "localhost"
-)
-
 var (
-	protocol   string
-	ip         string
-	port       int
-	showClosed bool
+	defaultProtocol string = "tcp"
+	defaultIp       string = GetIP().String()
+	protocol        string
+	ip              string
+	port            int
+	showClosed      bool
 )
 
 func main() {
@@ -81,4 +80,16 @@ func main() {
 		fmt.Printf("Done. Scanned in %v. \n", elapsed)
 	}
 
+}
+
+func GetIP() net.IP {
+	conn, err := net.Dial("udp", "8.8.8.8:80")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer conn.Close()
+
+	localAddr := conn.LocalAddr().(*net.UDPAddr)
+
+	return localAddr.IP
 }

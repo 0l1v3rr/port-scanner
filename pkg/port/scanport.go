@@ -3,6 +3,7 @@ package port
 import (
 	"net"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -11,7 +12,12 @@ func ScanPort(protocol string, hostname string, port int) bool {
 	conn, err := net.DialTimeout(protocol, address, 60*time.Second)
 
 	if err != nil {
-		return false
+		if strings.Contains(err.Error(), "too many open files") {
+			time.Sleep(60 * time.Second)
+			ScanPort(protocol, hostname, port)
+		} else {
+			return false
+		}
 	}
 	defer conn.Close()
 
