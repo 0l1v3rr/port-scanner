@@ -38,11 +38,6 @@ func ScanAllPorts(protocol string, ip string, showClosed bool) {
 
 	elapsed := time.Since(start)
 	fmt.Printf("Done. Scanned in %v. \n", elapsed)
-	if opened < 1 && !showClosed {
-		fmt.Println("There's no opened port.")
-	}
-	if showClosed {
-		fmt.Printf("Scanned ports: %v\n", scanned)
-		fmt.Printf("Open ports: %v\n", opened)
-	}
+	fmt.Printf("Scanned ports: %v\n", scanned)
+	fmt.Printf("Open ports: %v\n", opened)
 }
