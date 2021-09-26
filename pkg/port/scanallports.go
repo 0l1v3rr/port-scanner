@@ -12,9 +12,7 @@ func ScanAllPorts(protocol string, ip string, showClosed bool) {
 	opened := 0
 
 	fmt.Printf("\nStarting port scanning... (%v)\n", ip)
-	if showClosed {
-		fmt.Println("PORT \t\tSTATE \t\tSERVICE")
-	}
+	fmt.Println("PORT \t\tSTATE \t\tSERVICE")
 
 	for port := 1; port < 65535; port++ {
 		scanned++
@@ -37,6 +35,9 @@ func ScanAllPorts(protocol string, ip string, showClosed bool) {
 	}
 
 	elapsed := time.Since(start)
+	if opened < 1 && !showClosed {
+		fmt.Println("- \t\t- \t\t-")
+	}
 	fmt.Printf("Done. Scanned in %v. \n", elapsed)
 	fmt.Printf("Scanned ports: %v\n", scanned)
 	fmt.Printf("Open ports: %v\n", opened)
