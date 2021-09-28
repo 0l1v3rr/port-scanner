@@ -8,7 +8,7 @@ import (
 
 var ports [100]int = [100]int{21, 22, 23, 25, 53, 69, 79, 80, 110, 111, 139, 143, 443, 445, 513, 514, 995, 1080, 2049, 2082, 2121, 2745, 3306, 3127, 4444, 5432, 5554, 5900, 6000, 8866, 9898, 9988}
 
-func ScanMostKnownPorts(protocol string, ip string, showClosed bool) {
+func ScanMostKnownPorts(protocol string, ip string, showClosed bool, dialTime int) {
 
 	start := time.Now()
 	scanned := 0
@@ -20,7 +20,7 @@ func ScanMostKnownPorts(protocol string, ip string, showClosed bool) {
 	for _, port := range ports {
 		if port != 0 {
 			scanned++
-			if ScanPort(protocol, ip, port) {
+			if ScanPort(protocol, ip, port, dialTime) {
 				opened++
 				if len(strconv.Itoa(port)) < 3 {
 					fmt.Printf("%v/%v \t\topen \t\t%v\n", port, protocol, PortServiceName(port))

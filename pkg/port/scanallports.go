@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func ScanAllPorts(protocol string, ip string, showClosed bool) {
+func ScanAllPorts(protocol string, ip string, showClosed bool, dialTime int) {
 	start := time.Now()
 	scanned := 0
 	opened := 0
@@ -16,7 +16,7 @@ func ScanAllPorts(protocol string, ip string, showClosed bool) {
 
 	for port := 1; port < 65535; port++ {
 		scanned++
-		if ScanPort(protocol, ip, port) {
+		if ScanPort(protocol, ip, port, dialTime) {
 			opened++
 			if len(strconv.Itoa(port)) < 3 {
 				fmt.Printf("%v/%v \t\topen \t\t%v\n", port, protocol, PortServiceName(port))

@@ -17,7 +17,9 @@ import (
 var (
 	defaultProtocol string = "tcp"
 	defaultIp       string = GetIP().String()
+	defaultDialTime int    = 60
 	protocol        string
+	dialTime        int
 	ip              string
 	domain          string
 	port            int
@@ -37,6 +39,7 @@ func main() {
 	flag.StringVar(&protocol, "protocol", defaultProtocol, "The protocol")
 	flag.StringVar(&ip, "ip", defaultIp, "The IP Address you want to scan.")
 	flag.IntVar(&port, "port", -123, "The only port you want to scan.")
+	flag.IntVar(&dialTime, "dialtime", defaultDialTime, "The dial timeout you want to use.")
 	flag.StringVar(&domain, "domain", "", "The domain name you want to scan.")
 	flag.BoolVar(&showClosed, "closed", false, "With this flag, the app won't show the closed ports.")
 	flag.BoolVar(&allPorts, "all", false, "With this flag, the app will scan all the ports from 1 to 65535.")
@@ -54,16 +57,16 @@ func main() {
 
 	if allPorts {
 		if domain != "" {
-			pt.ScanAllPorts(protocol, domain, !showClosed)
+			pt.ScanAllPorts(protocol, domain, !showClosed, dialTime)
 		} else {
-			pt.ScanAllPorts(protocol, ip, !showClosed)
+			pt.ScanAllPorts(protocol, ip, !showClosed, dialTime)
 		}
 	} else {
 		if port == -123 {
 			if domain != "" {
-				pt.ScanMostKnownPorts(protocol, domain, !showClosed)
+				pt.ScanMostKnownPorts(protocol, domain, !showClosed, dialTime)
 			} else {
-				pt.ScanMostKnownPorts(protocol, ip, !showClosed)
+				pt.ScanMostKnownPorts(protocol, ip, !showClosed, dialTime)
 			}
 		} else {
 			if port < 1 {
@@ -99,7 +102,7 @@ func scan(prot string, ipod string, po int) {
 
 	fmt.Printf("\nStarting port scanning... (%v)\n", ipod)
 	fmt.Println("PORT \t\tSTATE \t\tSERVICE")
-	open := pt.ScanPort(prot, ipod, port)
+	open := pt.ScanPort(prot, ipod, port, dialTime)
 
 	if len(strconv.Itoa(port)) < 3 {
 		if open {
