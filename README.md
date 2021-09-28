@@ -27,6 +27,12 @@ On Windows: `go run cmd\port-scanner\main.go`
 <br><br>
 `--all` -> With this flag, the app will scan all the ports from 1 to 65535.<br>
 **Example usage:** `go run cmd\port-scanner\main.go --all`
+<br><br>
+`--dialtime` -> The dial timeout you want to use.<br>
+**Example usage:** `go run cmd\port-scanner\main.go --dialtime 10`
+<br><br>
+`--domain` -> The domain name you want to scan. Overrides the --ip flag.<br>
+**Example usage:** `go run cmd\port-scanner\main.go --domain google.com`
 
 ### You can combine the flags.
 For example: `go run cmd\port-scanner\main.go --ip 192.168.0.1 --port 23`<br>

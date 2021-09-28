@@ -9,6 +9,8 @@ func PrintHelpMenu() {
 	fmt.Println(" --port \t The only port you want to scan.")
 	fmt.Println(" --closed \t With this flag, the app won't show the closed ports.")
 	fmt.Println(" --all \t\t With this flag, the app will scan all the ports from 1 to 65535.")
+	fmt.Println(" --dialtime \t The dial timeout you want to use.")
+	fmt.Println(" --domain \t The domain name you want to scan. Overrides the --ip flag.")
 	fmt.Println("")
 }
 
