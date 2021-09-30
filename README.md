@@ -37,3 +37,14 @@ On Windows: `go run cmd\port-scanner\main.go`
 ### You can combine the flags.
 For example: `go run cmd\port-scanner\main.go --ip 192.168.0.1 --port 23`<br>
 The line above means that you are scanning port **23** of IP **192.168.0.1**.
+
+### Use anywhere as a command
+For example on Linux, open a terminal and type this command:
+```sh
+nano ~/.profile
+```
+Now scroll to the bottom and paste this:
+```sh
+export PATH="$PATH:/usr/local/cli-file-manager/bin"
+```
+*This is just an example, you should use your own path.*
