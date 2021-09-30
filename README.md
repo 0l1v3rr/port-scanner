@@ -45,6 +45,6 @@ nano ~/.profile
 ```
 Now scroll to the bottom and paste this:
 ```sh
-export PATH="$PATH:/usr/local/cli-file-manager/bin"
+export PATH="$PATH:/usr/local/port-scanner/bin"
 ```
 *This is just an example, you should use your own path.*
