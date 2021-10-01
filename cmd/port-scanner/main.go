@@ -117,6 +117,7 @@ func scan(prot string, ipod string, po int) {
 			fmt.Printf("%v/%v \tclosed \t\t%v\n", po, prot, pt.PortServiceName(po))
 		}
 	}
+	pt.PrintAddresses(prot, ipod, port, dialTime)
 
 	elapsed := time.Since(start)
 	fmt.Printf("Done. Scanned in %v. \n", elapsed)
