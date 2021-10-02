@@ -348,6 +348,8 @@ func PortServiceName(port int) string {
 		return "bacula"
 	case 9119:
 		return "mxit"
+	case 9418:
+		return "git"
 	case 9800:
 		return "webdav"
 	case 9898:
