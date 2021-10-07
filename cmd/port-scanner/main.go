@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"strconv"
 	"strings"
 
 	cl "github.com/0l1v3rr/port-scanner/internal/cli"
@@ -54,6 +55,17 @@ func main() {
 			} else {
 				fmt.Println("Please provide valid arguments!")
 			}
+		} else if strings.HasPrefix(input, "set dialtime") {
+			if len(s) >= 3 {
+				c, e := strconv.Atoi(s[2])
+				if e != nil {
+					fmt.Println("Please provide valid arguments!")
+				} else {
+					dialTime = c
+				}
+			} else {
+				fmt.Println("Please provide valid arguments!")
+			}
 		} else if strings.HasPrefix(input, "show details") {
 			printDetails()
 		} else if input == "run" {
@@ -81,9 +93,7 @@ func GetIP() net.IP {
 }
 
 func TrimSuffix(s, suffix string) string {
-	if strings.HasSuffix(s, suffix) {
-		s = s[:len(s)-len(suffix)]
-	}
+	s = s[:len(s)-len(suffix)]
 	return s
 }
 
