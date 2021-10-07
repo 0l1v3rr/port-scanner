@@ -1,88 +1,71 @@
 package main
 
 import (
-	"flag"
+	"bufio"
 	"fmt"
 	"log"
 	"net"
 	"os"
-	"strconv"
-	"time"
+	"strings"
 
-	hm "github.com/0l1v3rr/port-scanner/internal/help"
-	validip "github.com/0l1v3rr/port-scanner/pkg/ip"
+	cl "github.com/0l1v3rr/port-scanner/internal/cli"
+	help "github.com/0l1v3rr/port-scanner/internal/help"
 	pt "github.com/0l1v3rr/port-scanner/pkg/port"
 )
 
 var (
-	defaultProtocol string = "tcp"
-	defaultIp       string = GetIP().String()
-	defaultDialTime int    = 60
-	protocol        string
-	dialTime        int
-	ip              string
-	domain          string
-	port            int
-	showClosed      bool
-	allPorts        bool
+	target     string = GetIP().String()
+	protocol   string = "tcp"
+	dialTime   int    = 60
+	port       string = "mostknown"
+	showClosed bool   = true
 )
 
 func main() {
+	cl.Clear()
+	reader := bufio.NewReader(os.Stdin)
 
-	if len(os.Args) > 1 {
-		if os.Args[1] == "help" {
-			hm.PrintHelpMenu()
-			return
+	help.PrintLogo()
+	help.PrintMotd()
+
+	for {
+		fmt.Printf("scanner(%v) > ", target)
+		input, _ := reader.ReadString('\n')
+		input = TrimSuffix(input, "\n")
+
+		if input == "exit" {
+			break
 		}
-	}
 
-	flag.StringVar(&protocol, "protocol", defaultProtocol, "The protocol")
-	flag.StringVar(&ip, "ip", defaultIp, "The IP Address you want to scan.")
-	flag.IntVar(&port, "port", -123, "The only port you want to scan.")
-	flag.IntVar(&dialTime, "dialtime", defaultDialTime, "The dial timeout you want to use.")
-	flag.StringVar(&domain, "domain", "", "The domain name you want to scan.")
-	flag.BoolVar(&showClosed, "closed", false, "With this flag, the app won't show the closed ports.")
-	flag.BoolVar(&allPorts, "all", false, "With this flag, the app will scan all the ports from 1 to 65535.")
-	flag.Parse()
-
-	if protocol != "udp" && protocol != "tcp" {
-		fmt.Println("Error: Invalid protocol.")
-		return
-	}
-
-	if !validip.IsValidIp(ip) {
-		fmt.Println("Error: Invalid IP.")
-		return
-	}
-
-	if allPorts {
-		if domain != "" {
-			pt.ScanAllPorts(protocol, domain, !showClosed, dialTime)
-		} else {
-			pt.ScanAllPorts(protocol, ip, !showClosed, dialTime)
-		}
-	} else {
-		if port == -123 {
-			if domain != "" {
-				pt.ScanMostKnownPorts(protocol, domain, !showClosed, dialTime)
+		s := strings.Split(input, " ")
+		if strings.HasPrefix(input, "set target") {
+			if len(s) >= 3 {
+				target = s[2]
 			} else {
-				pt.ScanMostKnownPorts(protocol, ip, !showClosed, dialTime)
+				fmt.Println("Please provide valid arguments!")
 			}
-		} else {
-			if port < 1 {
-				fmt.Println("Error: Invalid port.")
-				return
-			}
-
-			if domain != "" {
-				scan(protocol, domain, port)
+		} else if strings.HasPrefix(input, "set protocol") {
+			if len(s) >= 3 {
+				if s[2] != "tcp" && s[2] != "udp" {
+					fmt.Println("Please provide valid arguments!")
+				} else {
+					protocol = s[2]
+				}
 			} else {
-				scan(protocol, ip, port)
+				fmt.Println("Please provide valid arguments!")
 			}
-
+		} else if strings.HasPrefix(input, "show details") {
+			printDetails()
+		} else if input == "run" {
+			if port == "mostknown" {
+				pt.ScanMostKnownPorts(protocol, target, showClosed, dialTime)
+			} else if port == "all" {
+				pt.ScanAllPorts(protocol, target, showClosed, dialTime)
+			}
+			fmt.Println()
 		}
-	}
 
+	}
 }
 
 func GetIP() net.IP {
@@ -97,7 +80,32 @@ func GetIP() net.IP {
 	return localAddr.IP
 }
 
-func scan(prot string, ipod string, po int) {
+func TrimSuffix(s, suffix string) string {
+	if strings.HasSuffix(s, suffix) {
+		s = s[:len(s)-len(suffix)]
+	}
+	return s
+}
+
+func printDetails() {
+	colorRed := "\033[31m"
+	colorReset := "\033[0m"
+
+	fmt.Println(string(colorReset), "")
+	fmt.Print(string(colorReset), " - Target: ")
+	fmt.Println(string(colorRed), target)
+	fmt.Print(string(colorReset), " - Protocol: ")
+	fmt.Println(string(colorRed), protocol)
+	fmt.Print(string(colorReset), " - Dial timeout: ")
+	fmt.Println(string(colorRed), dialTime)
+	fmt.Print(string(colorReset), " - Port(s): ")
+	fmt.Println(string(colorRed), port)
+	fmt.Print(string(colorReset), " - Show closed: ")
+	fmt.Println(string(colorRed), showClosed)
+	fmt.Println(string(colorReset), "")
+}
+
+/*func scan(prot string, ipod string, po int) {
 	start := time.Now()
 
 	fmt.Printf("\nStarting port scanning... (%v)\n", ipod)
@@ -121,4 +129,4 @@ func scan(prot string, ipod string, po int) {
 
 	elapsed := time.Since(start)
 	fmt.Printf("Done. Scanned in %v. \n", elapsed)
-}
+}*/
