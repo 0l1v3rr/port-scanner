@@ -66,6 +66,18 @@ func main() {
 			} else {
 				fmt.Println("Please provide valid arguments!")
 			}
+		} else if strings.HasPrefix(input, "set showClosed") || strings.HasPrefix(input, "set showclosed") {
+			if len(s) >= 3 {
+				if s[2] == "true" {
+					showClosed = true
+				} else if s[2] == "false" {
+					showClosed = false
+				} else {
+					fmt.Println("Please provide valid arguments!")
+				}
+			} else {
+				fmt.Println("Please provide valid arguments!")
+			}
 		} else if strings.HasPrefix(input, "show details") {
 			printDetails()
 		} else if input == "run" {
