@@ -87,6 +87,8 @@ func main() {
 				pt.ScanAllPorts(protocol, target, showClosed, dialTime)
 			}
 			fmt.Println()
+		} else {
+			invalidCmd()
 		}
 
 	}
@@ -114,17 +116,25 @@ func printDetails() {
 	colorReset := "\033[0m"
 
 	fmt.Println(string(colorReset), "")
-	fmt.Print(string(colorReset), " - Target: ")
+	fmt.Print(string(colorReset), " • Target:          ")
 	fmt.Println(string(colorRed), target)
-	fmt.Print(string(colorReset), " - Protocol: ")
+	fmt.Print(string(colorReset), " • Protocol:        ")
 	fmt.Println(string(colorRed), protocol)
-	fmt.Print(string(colorReset), " - Dial timeout: ")
+	fmt.Print(string(colorReset), " • Dial timeout:    ")
 	fmt.Println(string(colorRed), dialTime)
-	fmt.Print(string(colorReset), " - Port(s): ")
+	fmt.Print(string(colorReset), " • Port(s) to scan: ")
 	fmt.Println(string(colorRed), port)
-	fmt.Print(string(colorReset), " - Show closed: ")
+	fmt.Print(string(colorReset), " • Show closed:     ")
 	fmt.Println(string(colorRed), showClosed)
 	fmt.Println(string(colorReset), "")
+}
+
+func invalidCmd() {
+	colorYellow := "\033[33m"
+	colorReset := "\033[0m"
+	fmt.Print("Unknown command. Type ")
+	fmt.Print(string(colorYellow), "help")
+	fmt.Println(string(colorReset), "for help.")
 }
 
 /*func scan(prot string, ipod string, po int) {
