@@ -78,15 +78,32 @@ func main() {
 			} else {
 				fmt.Println("Please provide valid arguments!")
 			}
+		} else if strings.HasPrefix(input, "set ports") {
+			if len(s) >= 3 {
+				if strings.ToLower(s[2]) == "mostknown" {
+					port = "mostknown"
+				} else if strings.ToLower(s[2]) == "all" {
+					port = "all"
+				} else {
+					fmt.Println("Please provide valid arguments!")
+				}
+			} else {
+				fmt.Println("Please provide valid arguments!")
+			}
 		} else if strings.HasPrefix(input, "show details") {
 			printDetails()
-		} else if input == "run" {
+		} else if strings.HasPrefix(input, "run") {
 			if port == "mostknown" {
 				pt.ScanMostKnownPorts(protocol, target, showClosed, dialTime)
 			} else if port == "all" {
 				pt.ScanAllPorts(protocol, target, showClosed, dialTime)
 			}
 			fmt.Println()
+		} else if strings.HasPrefix(input, "clear") {
+			fmt.Print("\033[H\033[2J")
+		} else if strings.HasPrefix(input, "motd") {
+			help.PrintLogo()
+			help.PrintMotd()
 		} else {
 			invalidCmd()
 		}
@@ -135,6 +152,7 @@ func invalidCmd() {
 	fmt.Print("Unknown command. Type ")
 	fmt.Print(string(colorYellow), "help")
 	fmt.Println(string(colorReset), "for help.")
+	fmt.Println()
 }
 
 /*func scan(prot string, ipod string, po int) {
