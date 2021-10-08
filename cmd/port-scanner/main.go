@@ -66,7 +66,7 @@ func main() {
 			} else {
 				fmt.Println("Please provide valid arguments!")
 			}
-		} else if strings.HasPrefix(input, "set showClosed") || strings.HasPrefix(input, "set showclosed") {
+		} else if strings.HasPrefix(input, "set showclosed") {
 			if len(s) >= 3 {
 				if s[2] == "true" {
 					showClosed = true
@@ -104,6 +104,8 @@ func main() {
 		} else if strings.HasPrefix(input, "motd") {
 			help.PrintLogo()
 			help.PrintMotd()
+		} else if strings.HasPrefix(input, "help") {
+			help.Help()
 		} else {
 			invalidCmd()
 		}
