@@ -48,3 +48,44 @@ func ScanMostKnownPorts(protocol string, ip string, showClosed bool, dialTime in
 	fmt.Printf("Open ports: %v\n", opened)
 
 }
+
+func ScanSpecificPort(sports []int, protocol string, ip string, showClosed bool, dialTime int) {
+
+	start := time.Now()
+	scanned := 0
+	opened := 0
+
+	fmt.Printf("\nStarting port scanning... (%v)\n", ip)
+	fmt.Println("PORT \t\tSTATE \t\tSERVICE")
+
+	for _, port := range sports {
+		if port != 0 {
+			scanned++
+			if ScanPort(protocol, ip, port, dialTime) {
+				opened++
+				if len(strconv.Itoa(port)) < 3 {
+					fmt.Printf("%v/%v \t\topen \t\t%v\n", port, protocol, PortServiceName(port))
+				} else {
+					fmt.Printf("%v/%v \topen \t\t%v\n", port, protocol, PortServiceName(port))
+				}
+			} else {
+				if showClosed {
+					if len(strconv.Itoa(port)) < 3 {
+						fmt.Printf("%v/%v \t\tclosed \t\t%v\n", port, protocol, PortServiceName(port))
+					} else {
+						fmt.Printf("%v/%v \tclosed \t\t%v\n", port, protocol, PortServiceName(port))
+					}
+				}
+			}
+		}
+	}
+
+	elapsed := time.Since(start)
+	if opened < 1 && !showClosed {
+		fmt.Println("- \t\t- \t\t-")
+	}
+	fmt.Printf("Done. Scanned in %v. \n", elapsed)
+	fmt.Printf("Scanned ports: %v\n", scanned)
+	fmt.Printf("Open ports: %v\n", opened)
+
+}

@@ -93,10 +93,30 @@ func main() {
 		} else if strings.HasPrefix(input, "show details") {
 			printDetails()
 		} else if strings.HasPrefix(input, "run") {
-			if port == "mostknown" {
-				pt.ScanMostKnownPorts(protocol, target, showClosed, dialTime)
-			} else if port == "all" {
-				pt.ScanAllPorts(protocol, target, showClosed, dialTime)
+			if strings.HasPrefix(input, "run specific-ports") {
+				if len(s) >= 3 {
+					ports := strings.Split(s[2], ";")
+					var portsConverted []int
+					for _, s := range ports {
+						converted, cerr := strconv.Atoi(s)
+						if cerr == nil {
+							portsConverted = append(portsConverted, converted)
+						}
+					}
+					if len(portsConverted) < 1 {
+						fmt.Println("Please provide valid arguments!")
+					} else {
+						pt.ScanSpecificPort(portsConverted, protocol, target, showClosed, dialTime)
+					}
+				} else {
+					fmt.Println("Please provide valid arguments!")
+				}
+			} else {
+				if port == "mostknown" {
+					pt.ScanMostKnownPorts(protocol, target, showClosed, dialTime)
+				} else if port == "all" {
+					pt.ScanAllPorts(protocol, target, showClosed, dialTime)
+				}
 			}
 			fmt.Println()
 		} else if strings.HasPrefix(input, "clear") {
@@ -106,6 +126,8 @@ func main() {
 			help.PrintMotd()
 		} else if strings.HasPrefix(input, "help") {
 			help.Help()
+		} else if strings.HasPrefix(input, "reset") {
+			reset()
 		} else {
 			invalidCmd()
 		}
@@ -155,6 +177,14 @@ func invalidCmd() {
 	fmt.Print(string(colorYellow), "help")
 	fmt.Println(string(colorReset), "for help.")
 	fmt.Println()
+}
+
+func reset() {
+	target = GetIP().String()
+	protocol = "tcp"
+	dialTime = 60
+	port = "mostknown"
+	showClosed = true
 }
 
 /*func scan(prot string, ipod string, po int) {
