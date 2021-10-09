@@ -8,6 +8,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	cl "github.com/0l1v3rr/port-scanner/internal/cli"
 	help "github.com/0l1v3rr/port-scanner/internal/help"
@@ -128,6 +129,15 @@ func main() {
 			help.Help()
 		} else if strings.HasPrefix(input, "reset") {
 			reset()
+		} else if strings.HasPrefix(input, "update") {
+			if cl.IsUpdateNeeded() {
+				cl.Update()
+				time.Sleep(time.Second)
+				return
+			} else {
+				fmt.Println("The port-scanner is up to date.")
+			}
+			fmt.Println()
 		} else {
 			invalidCmd()
 		}

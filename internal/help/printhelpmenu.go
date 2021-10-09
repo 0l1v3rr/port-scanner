@@ -1,6 +1,10 @@
 package help
 
-import "fmt"
+import (
+	"fmt"
+
+	cl "github.com/0l1v3rr/port-scanner/internal/cli"
+)
 
 func PrintMotd() {
 	colorYellow := "\033[33m"
@@ -9,6 +13,7 @@ func PrintMotd() {
 	colorCyan := "\033[36m"
 	colorRed := "\033[31m"
 
+	cl.UpdateNeeded()
 	fmt.Print(string(colorGreen), " [>] Version: ")
 	fmt.Println(string(colorReset), "port-scanner v2.0.1")
 	fmt.Print(string(colorCyan), " [>] GitHub:  ")
@@ -58,6 +63,8 @@ func Help() {
 	fmt.Println(string(colorReset), "- Clears the terminal.")
 	fmt.Print(string(colorCyan), " • motd                       ")
 	fmt.Println(string(colorReset), "- Prints the banner.")
+	fmt.Print(string(colorCyan), " • update                     ")
+	fmt.Println(string(colorReset), "- If it's needed, the program will update itself.")
 	fmt.Print(string(colorCyan), " • run                        ")
 	fmt.Println(string(colorReset), "- Runs the scan.")
 	fmt.Print(string(colorCyan), " • run specific-ports <p1;p2;>")
