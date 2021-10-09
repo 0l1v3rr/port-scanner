@@ -3,7 +3,8 @@ This is a terminal application that allows you to find opened ports on your netw
 Inspired by [Nmap](https://github.com/nmap/nmap) and [Metasploit](https://github.com/rapid7/metasploit-framework).
 
 ## Setup
-First, you need to download [Go](https://golang.org/dl/)<br>
+First, you need to download [Go](https://golang.org/dl/) and [Git](https://git-scm.com/downloads)<br>
+*Note: Some features of the program use Git. Make sure you have it installed.*<br>
 Then clone this repository:
 ```sh
 git clone https://github.com/0l1v3rr/port-scanner.git
