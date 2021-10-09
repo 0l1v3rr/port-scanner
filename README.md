@@ -12,7 +12,18 @@ cd port-scanner
 On Linux or Mac, use the `make run` command, to run the app.<br>
 On Windows *(It only works on Git Bash!)*: `go run cmd/port-scanner/main.go`
 
-### Use anywhere as a command
+## Install on Termux
+```sh
+$ pkg update -y && pkg upgrade -y
+$ pkg install git
+$ pkg install golang
+$ pkg install make
+$ git clone https://github.com/0l1v3rr/port-scanner.git
+$ cd port-scanner
+$ make run
+```
+
+## Use anywhere as a command
 For example on Linux, open a terminal and type this command:
 ```sh
 nano ~/.profile

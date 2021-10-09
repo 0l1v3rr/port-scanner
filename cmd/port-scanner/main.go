@@ -30,7 +30,7 @@ func main() {
 	help.PrintMotd()
 
 	for {
-		fmt.Printf("scanner(%v) > ", target)
+		printScanner()
 		input, _ := reader.ReadString('\n')
 		input = TrimSuffix(input, "\n")
 
@@ -187,28 +187,11 @@ func reset() {
 	showClosed = true
 }
 
-/*func scan(prot string, ipod string, po int) {
-	start := time.Now()
+func printScanner() {
+	colorRed := "\033[31m"
+	colorReset := "\033[0m"
 
-	fmt.Printf("\nStarting port scanning... (%v)\n", ipod)
-	fmt.Println("PORT \t\tSTATE \t\tSERVICE")
-	open := pt.ScanPort(prot, ipod, port, dialTime)
-
-	if len(strconv.Itoa(port)) < 3 {
-		if open {
-			fmt.Printf("%v/%v \t\topen \t\t%v\n", po, prot, pt.PortServiceName(po))
-		} else {
-			fmt.Printf("%v/%v \t\tclosed \t\t%v\n", po, prot, pt.PortServiceName(po))
-		}
-	} else {
-		if open {
-			fmt.Printf("%v/%v \topen \t\t%v\n", po, prot, pt.PortServiceName(po))
-		} else {
-			fmt.Printf("%v/%v \tclosed \t\t%v\n", po, prot, pt.PortServiceName(po))
-		}
-	}
-	pt.PrintAddresses(prot, ipod, port, dialTime)
-
-	elapsed := time.Since(start)
-	fmt.Printf("Done. Scanned in %v. \n", elapsed)
-}*/
+	fmt.Print(string(colorReset), "scanner(")
+	fmt.Print(string(colorRed), target)
+	fmt.Print(string(colorReset), ") > ")
+}
