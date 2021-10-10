@@ -1,7 +1,6 @@
 package cli
 
 import (
-	"bytes"
 	"fmt"
 	"os/exec"
 	"strings"
@@ -13,10 +12,7 @@ func UpdateNeeded() {
 	colorReset := "\033[0m"
 	colorYellow := "\033[33m"
 
-	cmd := exec.Command("git", "fetch", "--dry-run")
-	var outb bytes.Buffer
-	cmd.Stdout = &outb
-	err := cmd.Run()
+	out, err := exec.Command("git", "fetch", "--dry-run").Output()
 
 	if err != nil {
 		fmt.Print(string(colorRed), " [!] Could not find Git installed.")
@@ -24,7 +20,7 @@ func UpdateNeeded() {
 		return
 	}
 
-	if strings.Contains(outb.String(), "remote: Enumerating objects:") {
+	if strings.Contains(string(out), "remote: ") {
 		fmt.Print(string(colorYellow), " [!] You are using an outdated version of the port scanner.")
 		fmt.Println(string(colorReset))
 	} else {
@@ -35,16 +31,13 @@ func UpdateNeeded() {
 }
 
 func IsUpdateNeeded() bool {
-	cmd := exec.Command("git", "fetch", "--dry-run")
-	var outb bytes.Buffer
-	cmd.Stdout = &outb
-	err := cmd.Run()
+	out, err := exec.Command("git", "fetch", "--dry-run").Output()
 
 	if err != nil {
 		return false
 	}
 
-	if strings.Contains(outb.String(), "remote: Enumerating objects:") {
+	if strings.Contains(string(out), "remote: ") {
 		return true
 	} else {
 		return false
