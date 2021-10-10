@@ -2,6 +2,8 @@
 This is a terminal application that allows you to find opened ports on your network.<br>
 Inspired by [Nmap](https://github.com/nmap/nmap) and [Metasploit](https://github.com/rapid7/metasploit-framework).
 
+<img src="./.github/img1.png" alt="img1">
+
 ## Setup
 First, you need to download [Go](https://golang.org/dl/) and [Git](https://git-scm.com/downloads)<br>
 *Note: Some features of the program use Git. Make sure you have it installed.*<br>
