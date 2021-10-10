@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"os/exec"
+	"strings"
 )
 
 func UpdateNeeded() {
@@ -23,13 +24,14 @@ func UpdateNeeded() {
 		return
 	}
 
-	if outb.String() == "" || len(outb.String()) < 1 {
-		fmt.Print(string(colorGreen), " [!] The port-scanner is up to date.")
-		fmt.Println(string(colorReset))
-	} else {
+	if strings.Contains(outb.String(), "remote: Enumerating objects:") {
 		fmt.Print(string(colorYellow), " [!] You are using an outdated version of the port scanner.")
 		fmt.Println(string(colorReset))
+	} else {
+		fmt.Print(string(colorGreen), " [!] The port-scanner is up to date.")
+		fmt.Println(string(colorReset))
 	}
+
 }
 
 func IsUpdateNeeded() bool {
@@ -42,10 +44,10 @@ func IsUpdateNeeded() bool {
 		return false
 	}
 
-	if outb.String() == "" || len(outb.String()) < 1 {
-		return false
-	} else {
+	if strings.Contains(outb.String(), "remote: Enumerating objects:") {
 		return true
+	} else {
+		return false
 	}
 }
 
