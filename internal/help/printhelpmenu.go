@@ -15,7 +15,7 @@ func PrintMotd() {
 
 	cl.UpdateNeeded()
 	fmt.Print(string(colorGreen), " [>] Version: ")
-	fmt.Println(string(colorReset), "port-scanner v2.0.1")
+	fmt.Println(string(colorReset), "port-scanner v2.1.0")
 	fmt.Print(string(colorCyan), " [>] GitHub:  ")
 	fmt.Println(string(colorReset), "https://github.com/0l1v3rr/port-scanner")
 	fmt.Print(string(colorReset), " [x] Type ")
@@ -63,6 +63,8 @@ func Help() {
 	fmt.Println(string(colorReset), "- Clears the terminal.")
 	fmt.Print(string(colorCyan), " • motd                       ")
 	fmt.Println(string(colorReset), "- Prints the banner.")
+	fmt.Print(string(colorCyan), " • ping <host>                ")
+	fmt.Println(string(colorReset), "- Checks if the given host is alive.")
 	fmt.Print(string(colorCyan), " • update                     ")
 	fmt.Println(string(colorReset), "- If it's needed, the program will update itself.")
 	fmt.Print(string(colorCyan), " • run                        ")

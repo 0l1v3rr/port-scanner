@@ -122,6 +122,12 @@ func main() {
 			fmt.Println()
 		} else if strings.HasPrefix(input, "clear") {
 			fmt.Print("\033[H\033[2J")
+		} else if strings.HasPrefix(input, "ping") {
+			if len(s) >= 2 {
+				cl.Ping(s[1])
+			} else {
+				fmt.Println("Please provide valid arguments!")
+			}
 		} else if strings.HasPrefix(input, "motd") {
 			help.PrintLogo()
 			help.PrintMotd()
@@ -138,6 +144,8 @@ func main() {
 				fmt.Println("The port-scanner is up to date.")
 			}
 			fmt.Println()
+		} else if input == "" || input == " " {
+			continue
 		} else {
 			invalidCmd()
 		}
