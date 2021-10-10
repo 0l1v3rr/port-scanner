@@ -12,6 +12,7 @@ import (
 
 	cl "github.com/0l1v3rr/port-scanner/internal/cli"
 	help "github.com/0l1v3rr/port-scanner/internal/help"
+	ips "github.com/0l1v3rr/port-scanner/pkg/ip"
 	pt "github.com/0l1v3rr/port-scanner/pkg/port"
 )
 
@@ -122,6 +123,10 @@ func main() {
 			fmt.Println()
 		} else if strings.HasPrefix(input, "clear") {
 			fmt.Print("\033[H\033[2J")
+		} else if strings.HasPrefix(input, "show interfaces") {
+			fmt.Println()
+			ips.Ips()
+			fmt.Println()
 		} else if strings.HasPrefix(input, "ping") {
 			if len(s) >= 2 {
 				cl.Ping(s[1])
