@@ -15,7 +15,7 @@ func UpdateNeeded() {
 	out, err := exec.Command("git", "fetch", "--dry-run").Output()
 
 	if err != nil {
-		fmt.Print(string(colorRed), " [!] Could not find Git installed.")
+		fmt.Print(string(colorRed), " [!] An error occurred. Maybe you don't have git installed.")
 		fmt.Println(string(colorReset))
 		return
 	}
