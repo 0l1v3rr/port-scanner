@@ -135,6 +135,10 @@ func main() {
 			fmt.Println()
 			ips.Ips()
 			fmt.Println()
+		} else if strings.HasPrefix(input, "show mac") {
+			fmt.Println()
+			cl.PrintMacAddr()
+			fmt.Println()
 		} else if strings.HasPrefix(input, "motd") {
 			help.PrintLogo()
 			help.PrintMotd()
