@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"os/exec"
 	"strconv"
 	"strings"
 	"time"
@@ -94,6 +95,13 @@ func main() {
 			}
 		} else if strings.HasPrefix(input, "show details") {
 			printDetails()
+		} else if strings.HasPrefix(input, "do") {
+			if len(s) >= 2 {
+				ex(strings.Join(s[1:], " "))
+				fmt.Println()
+			} else {
+				fmt.Println("Please provide valid arguments!")
+			}
 		} else if strings.HasPrefix(input, "run") {
 			if strings.HasPrefix(input, "run specific-ports") {
 				if len(s) >= 3 {
@@ -127,16 +135,10 @@ func main() {
 			fmt.Println()
 			ips.Ips()
 			fmt.Println()
-		} else if strings.HasPrefix(input, "ping") {
-			if len(s) >= 2 {
-				cl.Ping(s[1])
-			} else {
-				fmt.Println("Please provide valid arguments!")
-			}
 		} else if strings.HasPrefix(input, "motd") {
 			help.PrintLogo()
 			help.PrintMotd()
-		} else if strings.HasPrefix(input, "help") {
+		} else if strings.HasPrefix(input, "help") || input == "?" {
 			help.Help()
 		} else if strings.HasPrefix(input, "reset") {
 			reset()
@@ -173,6 +175,22 @@ func GetIP() net.IP {
 func TrimSuffix(s, suffix string) string {
 	s = s[:len(s)-len(suffix)]
 	return s
+}
+
+func ex(c string) {
+	out, err := exec.Command("/bin/sh", "-c", c).Output()
+
+	if err != nil {
+		fmt.Println("Unknown command.")
+		return
+	}
+
+	if out != nil {
+		fmt.Print(string(out))
+		return
+	}
+
+	fmt.Println("Unknown command.")
 }
 
 func printDetails() {
