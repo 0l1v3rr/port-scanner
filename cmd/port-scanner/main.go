@@ -214,9 +214,9 @@ func printIPInfo(ip string) {
 	class := ips.Class(ip)
 
 	fmt.Println(string(colorReset), "")
-	fmt.Print(string(colorYellow), " • IP:      ")
+	fmt.Print(string(colorYellow), " • IP:        ")
 	fmt.Println(string(colorReset), ip)
-	fmt.Print(string(colorYellow), " • Netmask: ")
+	fmt.Print(string(colorYellow), " • Netmask:   ")
 	if class == "A" {
 		fmt.Println(string(colorReset), "255.0.0.0")
 	} else if class == "B" {
@@ -224,8 +224,27 @@ func printIPInfo(ip string) {
 	} else {
 		fmt.Println(string(colorReset), "255.255.255.0")
 	}
-	fmt.Print(string(colorYellow), " • Class:   ")
+	fmt.Print(string(colorYellow), " • Network:    ")
+	fmt.Print(string(colorReset), ip)
+	if class == "A" {
+		fmt.Println("/8")
+	} else if class == "B" {
+		fmt.Println("/16")
+	} else {
+		fmt.Println("/24")
+	}
+	fmt.Print(string(colorYellow), " • Class:     ")
 	fmt.Println(string(colorReset), class)
+	fmt.Print(string(colorYellow), " • Type:      ")
+	fmt.Println(string(colorReset), ips.Type(ip))
+	fmt.Print(string(colorYellow), " • Allocable: ")
+	if class == "A" {
+		fmt.Println(string(colorReset), "253")
+	} else if class == "B" {
+		fmt.Println(string(colorReset), "63,023")
+	} else {
+		fmt.Println(string(colorReset), "16,581,373")
+	}
 	fmt.Println(string(colorReset), "")
 }
 
