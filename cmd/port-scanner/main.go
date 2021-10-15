@@ -102,6 +102,16 @@ func main() {
 			} else {
 				fmt.Println("Please provide valid arguments!")
 			}
+		} else if strings.HasPrefix(input, "ipinfo") {
+			if len(s) >= 2 {
+				if !ips.IsValidIp(s[1]) {
+					fmt.Println("Please provide a valid IPv4 address!")
+				} else {
+					printIPInfo(s[1])
+				}
+			} else {
+				fmt.Println("Please provide valid arguments!")
+			}
 		} else if strings.HasPrefix(input, "run") {
 			if strings.HasPrefix(input, "run specific-ports") {
 				if len(s) >= 3 {
@@ -197,6 +207,28 @@ func ex(c string) {
 	fmt.Println("Unknown command.")
 }
 
+func printIPInfo(ip string) {
+	colorYellow := "\033[33m"
+	colorReset := "\033[0m"
+
+	class := ips.Class(ip)
+
+	fmt.Println(string(colorReset), "")
+	fmt.Print(string(colorYellow), " • IP:      ")
+	fmt.Println(string(colorReset), ip)
+	fmt.Print(string(colorYellow), " • Netmask: ")
+	if class == "A" {
+		fmt.Println(string(colorReset), "255.0.0.0")
+	} else if class == "B" {
+		fmt.Println(string(colorReset), "255.255.0.0")
+	} else {
+		fmt.Println(string(colorReset), "255.255.255.0")
+	}
+	fmt.Print(string(colorYellow), " • Class:   ")
+	fmt.Println(string(colorReset), class)
+	fmt.Println(string(colorReset), "")
+}
+
 func printDetails() {
 	colorRed := "\033[31m"
 	colorReset := "\033[0m"
@@ -221,7 +253,6 @@ func invalidCmd() {
 	fmt.Print("Unknown command. Type ")
 	fmt.Print(string(colorYellow), "help")
 	fmt.Println(string(colorReset), "for help.")
-	fmt.Println()
 }
 
 func reset() {
