@@ -239,12 +239,20 @@ func printIPInfo(ip string) {
 	fmt.Println(string(colorReset), ips.Type(ip))
 	fmt.Print(string(colorYellow), " • Allocable: ")
 	if class == "A" {
-		fmt.Println(string(colorReset), "253")
+		fmt.Println(string(colorReset), "16,581,373")
 	} else if class == "B" {
 		fmt.Println(string(colorReset), "63,023")
 	} else {
-		fmt.Println(string(colorReset), "16,581,373")
+		fmt.Println(string(colorReset), "253")
 	}
+	fmt.Print(string(colorYellow), " • First IP:  ")
+	fmt.Println(string(colorReset), ips.FirstIP(ip))
+	fmt.Print(string(colorYellow), " • Last IP:   ")
+	fmt.Println(string(colorReset), ips.LastIP(ip))
+	fmt.Print(string(colorYellow), " • Prefix:    ")
+	fmt.Println(string(colorReset), ips.Prefix(ip))
+	fmt.Print(string(colorYellow), " • Broadcast  ")
+	fmt.Println(string(colorReset), ips.Broadcast(ip))
 	fmt.Println(string(colorReset), "")
 }
 
