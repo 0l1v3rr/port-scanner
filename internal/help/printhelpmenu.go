@@ -73,6 +73,8 @@ func Help() {
 	fmt.Println(string(colorReset), "- If it's needed, the program will update itself.")
 	fmt.Print(string(colorCyan), " • ipinfo <IP>                ")
 	fmt.Println(string(colorReset), "- Prints some information about the specified IP address.")
+	fmt.Print(string(colorCyan), " • show publicip              ")
+	fmt.Println(string(colorReset), "- Shows your public IP address.")
 	fmt.Print(string(colorCyan), " • run                        ")
 	fmt.Println(string(colorReset), "- Runs the scan.")
 	fmt.Print(string(colorCyan), " • run specific-ports <p1;p2;>")

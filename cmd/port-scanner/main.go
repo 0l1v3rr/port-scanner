@@ -141,6 +141,8 @@ func main() {
 			fmt.Println()
 		} else if strings.HasPrefix(input, "clear") {
 			fmt.Print("\033[H\033[2J")
+		} else if strings.HasPrefix(input, "show publicip") {
+			ips.PublicIP()
 		} else if strings.HasPrefix(input, "show interfaces") {
 			fmt.Println()
 			ips.Ips()
