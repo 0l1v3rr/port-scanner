@@ -4,6 +4,16 @@ Inspired by [Nmap](https://github.com/nmap/nmap) and [Metasploit](https://github
 
 <img src="./.github/img1.png" alt="img1">
 
+## Features
+- Scans all ports
+- Scans most-known ports
+- Sets dial timeout
+- Sets specific target
+- Executes any terminal command with `do <cmd>`
+- Shows interfaces, IP, and Mac addresses
+- Ipinfo command
+- Runs port scanning with specific ports
+
 ## Setup
 First, you need to download [Go](https://golang.org/dl/) and [Git](https://git-scm.com/downloads)<br>
 *Note: Some features of the program use Git. Make sure you have it installed.*<br>
