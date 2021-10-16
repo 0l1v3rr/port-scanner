@@ -15,7 +15,7 @@ func PrintMotd() {
 
 	cl.UpdateNeeded()
 	fmt.Print(string(colorGreen), " [>] Version: ")
-	fmt.Println(string(colorReset), "port-scanner v2.2.1")
+	fmt.Println(string(colorReset), "port-scanner v2.3.0")
 	fmt.Print(string(colorCyan), " [>] GitHub:  ")
 	fmt.Println(string(colorReset), "https://github.com/0l1v3rr/port-scanner")
 	fmt.Print(string(colorReset), " [x] Type ")
