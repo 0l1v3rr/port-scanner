@@ -7,14 +7,14 @@ import (
 )
 
 func PrintMotd() {
-	colorYellow := "\033[33m"
+	colorYellow := "\033[33;1m"
 	colorReset := "\033[0m"
-	colorGreen := "\033[32m"
-	colorCyan := "\033[36m"
-	colorRed := "\033[31m"
+	colorBlue := "\033[34;1m"
+	colorCyan := "\033[36;1m"
+	colorRed := "\033[31;1m"
 
 	cl.UpdateNeeded()
-	fmt.Print(string(colorGreen), " [>] Version: ")
+	fmt.Print(string(colorBlue), " [>] Version: ")
 	fmt.Println(string(colorReset), "port-scanner v2.3.0")
 	fmt.Print(string(colorCyan), " [>] GitHub:  ")
 	fmt.Println(string(colorReset), "https://github.com/0l1v3rr/port-scanner")
@@ -28,7 +28,7 @@ func PrintMotd() {
 }
 
 func PrintLogo() {
-	colorCyan := "\033[36m"
+	colorCyan := "\033[36;1m"
 	colorReset := "\033[0m"
 
 	fmt.Println(string(colorCyan), "        ___  ___  ___ _____ ")

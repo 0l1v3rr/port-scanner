@@ -259,7 +259,7 @@ func printIPInfo(ip string) {
 }
 
 func printDetails() {
-	colorRed := "\033[31m"
+	colorRed := "\033[31;1m"
 	colorReset := "\033[0m"
 
 	fmt.Println(string(colorReset), "")
@@ -293,10 +293,13 @@ func reset() {
 }
 
 func printScanner() {
-	colorRed := "\033[31m"
+	colorRed := "\033[31;1m"
 	colorReset := "\033[0m"
 
-	fmt.Print(string(colorReset), "scanner(")
+	fmt.Print(string(colorReset))
+	fmt.Print(string("\033[4m"), "psf")
+	fmt.Print(string(colorReset), "(")
+	fmt.Print(string("\033[1m"))
 	fmt.Print(string(colorRed), target)
 	fmt.Print(string(colorReset), ") > ")
 }

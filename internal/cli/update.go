@@ -7,10 +7,10 @@ import (
 )
 
 func UpdateNeeded() {
-	colorRed := "\033[31m"
-	colorGreen := "\033[32m"
+	colorRed := "\033[31;1m"
+	colorGreen := "\033[32;1m"
 	colorReset := "\033[0m"
-	colorYellow := "\033[33m"
+	colorYellow := "\033[33;1m"
 
 	out, err := exec.Command("git", "fetch", "--dry-run").Output()
 
@@ -45,15 +45,14 @@ func IsUpdateNeeded() bool {
 }
 
 func Update() {
-	colorRed := "\033[31m"
-	colorGreen := "\033[32m"
+	colorGreen := "\033[32;1m"
 	colorReset := "\033[0m"
 
 	cmd := exec.Command("git", "pull")
 	err := cmd.Run()
 
 	if err != nil {
-		fmt.Print(string(colorRed), "An error occurred.")
+		fmt.Print("An error occurred.")
 		fmt.Println(string(colorReset))
 		return
 	}
