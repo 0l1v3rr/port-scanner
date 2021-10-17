@@ -45,6 +45,7 @@ func main() {
 		if strings.HasPrefix(input, "set target") {
 			if len(s) >= 3 {
 				target = s[2]
+				fmt.Printf("target => %v\n", target)
 			} else {
 				fmt.Println("Please provide valid arguments!")
 			}
@@ -54,6 +55,7 @@ func main() {
 					fmt.Println("Please provide valid arguments!")
 				} else {
 					protocol = s[2]
+					fmt.Printf("protocol => %v\n", protocol)
 				}
 			} else {
 				fmt.Println("Please provide valid arguments!")
@@ -65,6 +67,7 @@ func main() {
 					fmt.Println("Please provide valid arguments!")
 				} else {
 					dialTime = c
+					fmt.Printf("dialtime => %v\n", dialTime)
 				}
 			} else {
 				fmt.Println("Please provide valid arguments!")
@@ -73,8 +76,10 @@ func main() {
 			if len(s) >= 3 {
 				if s[2] == "true" {
 					showClosed = true
+					fmt.Printf("showclosed => %v\n", "true")
 				} else if s[2] == "false" {
 					showClosed = false
+					fmt.Printf("showclosed => %v\n", "false")
 				} else {
 					fmt.Println("Please provide valid arguments!")
 				}
@@ -85,8 +90,10 @@ func main() {
 			if len(s) >= 3 {
 				if strings.ToLower(s[2]) == "mostknown" {
 					port = "mostknown"
+					fmt.Printf("ports => %v\n", port)
 				} else if strings.ToLower(s[2]) == "all" {
 					port = "all"
+					fmt.Printf("ports => %v\n", port)
 				} else {
 					fmt.Println("Please provide valid arguments!")
 				}
