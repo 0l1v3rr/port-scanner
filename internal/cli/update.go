@@ -30,20 +30,6 @@ func UpdateNeeded() {
 
 }
 
-func IsUpdateNeeded() bool {
-	out, err := exec.Command("git", "fetch", "--dry-run").Output()
-
-	if err != nil {
-		return false
-	}
-
-	if strings.Contains(string(out), "remote: ") {
-		return true
-	} else {
-		return false
-	}
-}
-
 func Update() {
 	colorGreen := "\033[32;1m"
 	colorReset := "\033[0m"
@@ -52,8 +38,7 @@ func Update() {
 	err := cmd.Run()
 
 	if err != nil {
-		fmt.Print("An error occurred.")
-		fmt.Println(string(colorReset))
+		fmt.Println("An error occurred.")
 		return
 	}
 

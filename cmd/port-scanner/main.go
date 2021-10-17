@@ -141,7 +141,10 @@ func main() {
 			fmt.Println()
 		} else if strings.HasPrefix(input, "clear") {
 			fmt.Print("\033[H\033[2J")
-		} else if strings.HasPrefix(input, "show publicip") {
+		} else if strings.HasPrefix(input, "show ip") {
+			fmt.Println()
+			fmt.Print(string("\033[36m"), " • Your IP:       ")
+			fmt.Println(string("\033[0m"), GetIP())
 			ips.PublicIP()
 		} else if strings.HasPrefix(input, "show interfaces") {
 			fmt.Println()
@@ -159,14 +162,9 @@ func main() {
 		} else if strings.HasPrefix(input, "reset") {
 			reset()
 		} else if strings.HasPrefix(input, "update") {
-			if cl.IsUpdateNeeded() {
-				cl.Update()
-				time.Sleep(time.Second)
-				return
-			} else {
-				fmt.Println("The port-scanner is up to date.")
-			}
-			fmt.Println()
+			cl.Update()
+			time.Sleep(time.Second)
+			return
 		} else if input == "" || input == " " {
 			continue
 		} else {
@@ -298,7 +296,7 @@ func printScanner() {
 
 	fmt.Print(string(colorReset))
 	fmt.Print(string("\033[4m"), "psf")
-	fmt.Print(string(colorReset), "(")
+	fmt.Print(string(colorReset), " target(")
 	fmt.Print(string("\033[1m"))
 	fmt.Print(string(colorRed), target)
 	fmt.Print(string(colorReset), ") > ")

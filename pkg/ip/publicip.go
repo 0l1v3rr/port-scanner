@@ -25,7 +25,6 @@ func PublicIP() {
 		return
 	}
 
-	fmt.Println()
 	fmt.Print(string(colorCyan), " • Your public IP: ")
 	fmt.Print(string(colorReset), "")
 	fmt.Printf("%s\n", ip)
