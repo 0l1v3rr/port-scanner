@@ -2,7 +2,7 @@
 This is a terminal application that allows you to find opened ports on your network.<br>
 Inspired by [Nmap](https://github.com/nmap/nmap) and [Metasploit](https://github.com/rapid7/metasploit-framework).
 
-<img src="./.github/img1.png" alt="img1">
+<img src="./.github/ps.png" alt="img1">
 
 ## Features
 - Scans all ports
