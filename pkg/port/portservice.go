@@ -143,7 +143,7 @@ func PortServiceName(port int) string {
 	case 1025:
 		return "microsoft rpc"
 	case 1080:
-		return "socks proxy/mydooom"
+		return "socks proxy"
 	case 1194:
 		return "openvpn"
 	case 1214:

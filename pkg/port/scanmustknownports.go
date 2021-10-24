@@ -15,6 +15,7 @@ func ScanMostKnownPorts(protocol string, ip string, showClosed bool, dialTime in
 	opened := 0
 
 	fmt.Printf("\nStarting port scanning... (%v)\n", ip)
+	PrintAddresses(ip)
 	fmt.Println("PORT \t\tSTATE \t\tSERVICE")
 
 	for _, port := range ports {

@@ -12,6 +12,7 @@ func ScanAllPorts(protocol string, ip string, showClosed bool, dialTime int) {
 	opened := 0
 
 	fmt.Printf("\nStarting port scanning... (%v)\n", ip)
+	PrintAddresses(ip)
 	fmt.Println("PORT \t\tSTATE \t\tSERVICE")
 
 	for port := 1; port < 65535; port++ {
