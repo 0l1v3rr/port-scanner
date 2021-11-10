@@ -258,7 +258,7 @@ func printIPInfo(ip string) {
 	fmt.Println(string(colorReset), ips.LastIP(ip))
 	fmt.Print(string(colorYellow), " • Prefix:    ")
 	fmt.Println(string(colorReset), ips.Prefix(ip))
-	fmt.Print(string(colorYellow), " • Broadcast  ")
+	fmt.Print(string(colorYellow), " • Broadcast: ")
 	fmt.Println(string(colorReset), ips.Broadcast(ip))
 	fmt.Println(string(colorReset), "")
 }
