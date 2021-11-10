@@ -37,7 +37,7 @@ func main() {
 		input, _ := reader.ReadString('\n')
 		input = TrimSuffix(input, "\n")
 
-		if input == "exit" {
+		if strings.HasPrefix(input, "ex") {
 			break
 		}
 
@@ -303,8 +303,13 @@ func printScanner() {
 
 	fmt.Print(string(colorReset))
 	fmt.Print(string("\033[4m"), "psf")
-	fmt.Print(string(colorReset), " target(")
-	fmt.Print(string("\033[1m"))
-	fmt.Print(string(colorRed), target)
-	fmt.Print(string(colorReset), ") > ")
+
+	if target != GetIP().String() {
+		fmt.Print(string(colorReset), " target(")
+		fmt.Print(string("\033[1m"))
+		fmt.Print(string(colorRed), target)
+		fmt.Print(string(colorReset), ")")
+	}
+
+	fmt.Print(string(colorReset), " > ")
 }
