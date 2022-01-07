@@ -16,5 +16,5 @@ func PrintAddresses(hostname string) {
 	}
 	defer conn.Close()
 
-	fmt.Printf("Remote address: %s\n", conn.RemoteAddr().String())
+	fmt.Printf("Remote address: \u001b[31;1m%s\u001b[0m\n", conn.RemoteAddr().String())
 }

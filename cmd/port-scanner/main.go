@@ -302,7 +302,7 @@ func printScanner() {
 	colorReset := "\033[0m"
 
 	fmt.Print(string(colorReset))
-	fmt.Print(string("\033[4m"), "psf")
+	fmt.Print(string("\033[4m"), "sc")
 
 	if target != GetIP().String() {
 		fmt.Print(string(colorReset), " target(")

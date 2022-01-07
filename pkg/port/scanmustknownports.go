@@ -14,9 +14,8 @@ func ScanMostKnownPorts(protocol string, ip string, showClosed bool, dialTime in
 	scanned := 0
 	opened := 0
 
-	fmt.Printf("\nStarting port scanning... (%v)\n", ip)
-	PrintAddresses(ip)
-	fmt.Println("PORT \t\tSTATE \t\tSERVICE")
+	fmt.Printf("\nStarting port scanning... (\u001b[31;1m%v\u001b[0m)\n", ip)
+	fmt.Println("\u001b[4mPORT\u001b[0m 		\u001b[4mSTATE\u001b[0m 		\u001b[4mSERVICE\u001b[0m")
 
 	for _, port := range ports {
 		if port != 0 {
@@ -24,16 +23,16 @@ func ScanMostKnownPorts(protocol string, ip string, showClosed bool, dialTime in
 			if ScanPort(protocol, ip, port, dialTime) {
 				opened++
 				if len(strconv.Itoa(port)) < 3 {
-					fmt.Printf("%v/%v \t\topen \t\t%v\n", port, protocol, PortServiceName(port))
+					fmt.Printf("%v/%v \t\t\u001b[32;1mopen\u001b[0m \t\t%v\n", port, protocol, PortServiceName(port))
 				} else {
-					fmt.Printf("%v/%v \topen \t\t%v\n", port, protocol, PortServiceName(port))
+					fmt.Printf("%v/%v \t\u001b[32;1mopen\u001b[0m \t\t%v\n", port, protocol, PortServiceName(port))
 				}
 			} else {
 				if showClosed {
 					if len(strconv.Itoa(port)) < 3 {
-						fmt.Printf("%v/%v \t\tclosed \t\t%v\n", port, protocol, PortServiceName(port))
+						fmt.Printf("%v/%v \t\t\u001b[31;1mclosed\u001b[0m \t\t%v\n", port, protocol, PortServiceName(port))
 					} else {
-						fmt.Printf("%v/%v \tclosed \t\t%v\n", port, protocol, PortServiceName(port))
+						fmt.Printf("%v/%v \t\u001b[31;1mclosed\u001b[0m \t\t%v\n", port, protocol, PortServiceName(port))
 					}
 				}
 			}
@@ -56,8 +55,8 @@ func ScanSpecificPort(sports []int, protocol string, ip string, showClosed bool,
 	scanned := 0
 	opened := 0
 
-	fmt.Printf("\nStarting port scanning... (%v)\n", ip)
-	fmt.Println("PORT \t\tSTATE \t\tSERVICE")
+	fmt.Printf("\nStarting port scanning... (\u001b[31;1m%v\u001b[0m)\n", ip)
+	fmt.Println("\u001b[4mPORT\u001b[0m 		\u001b[4mSTATE\u001b[0m 		\u001b[4mSERVICE\u001b[0m")
 
 	for _, port := range sports {
 		if port != 0 {
@@ -65,16 +64,16 @@ func ScanSpecificPort(sports []int, protocol string, ip string, showClosed bool,
 			if ScanPort(protocol, ip, port, dialTime) {
 				opened++
 				if len(strconv.Itoa(port)) < 3 {
-					fmt.Printf("%v/%v \t\topen \t\t%v\n", port, protocol, PortServiceName(port))
+					fmt.Printf("%v/%v \t\t\u001b[32;1mopen\u001b[0m \t\t%v\n", port, protocol, PortServiceName(port))
 				} else {
-					fmt.Printf("%v/%v \topen \t\t%v\n", port, protocol, PortServiceName(port))
+					fmt.Printf("%v/%v \t\u001b[32;1mopen\u001b[0m \t\t%v\n", port, protocol, PortServiceName(port))
 				}
 			} else {
 				if showClosed {
 					if len(strconv.Itoa(port)) < 3 {
-						fmt.Printf("%v/%v \t\tclosed \t\t%v\n", port, protocol, PortServiceName(port))
+						fmt.Printf("%v/%v \t\t\u001b[31;1mclosed\u001b[0m \t\t%v\n", port, protocol, PortServiceName(port))
 					} else {
-						fmt.Printf("%v/%v \tclosed \t\t%v\n", port, protocol, PortServiceName(port))
+						fmt.Printf("%v/%v \t\u001b[31;1mclosed\u001b[0m \t\t%v\n", port, protocol, PortServiceName(port))
 					}
 				}
 			}
